@@ -1,0 +1,42 @@
+Thaumcraft 6 Enhanced Patcher Version Notes:
+
+1.0.0.0
+Modified thaumcraft.common.items.casters.CasterManager to:
+	- allow checks on main hand and off hand items for IVisDiscountGear
+	- changed isOnCooldown() to a public object
+
+1.0.0.1
+included PatcherLoader.class as a FMLCoremodPlugin in META-INF/MANIFEST.mf, in order to have the mod appear in the in-game modlist.
+
+1.0.1.0
+modified several files in Thaumcraft 6:
+	- changed the classes ItemFortressArmor and ItemVoidRobeArmor so that they no longer used the ISpecialArmor interface from MinecraftForge
+	- disabled all the methods related to the ISpecialArmor interface within ItemFortressArmor.java and ItemVoidRobeArmor.java
+	- modified the armor values in ThaumcraftMaterials for Thaumium Fortress Armor and Void Robes Armor. 
+
+1.0.2.0
+modified files and added files to the patch library to modify runic:
+	- changed runic from using the absorption mechanic to using it's own unique mechanics:
+		- damage mitigation on runic only affected by the player's armor rating (not toughness or enchanted protection)
+			- damage to runic shielding *is* affected by the resistance magic effect
+		- displays in a similar manner to TC4 runic shielding
+		- damage to players while their runic shielding is charged will not damage their worn armor
+		- runic shielding will not work for the following damage types:
+			- withering
+			- drowning
+			- suffocating (stuck in blocks)
+			- falling out of the world
+			- getting crammed (too many entities within the one block)
+			- starvation
+		- runic shielding will not recharge instantly on damage, and will use the 'shieldwait' variable in the mod configuration menu
+		- runic shielding will take double the time set by 'shieldwait' to recharge once reduced to 0
+			- the wording of the display for the mod configuration has been changed to reflect this
+		- players shot with arrows when runic shielding is charged will not have arrows left stuck in their player character
+
+1.0.2.1
+	- back-end reversions to class structures for the patcher
+	- bugfixes with the byte-reading and patching by Forge for reading multiple .class files to replace
+
+1.0.2.2
+	- moved all library files to a seperate jar for loading, Thaumcraft6Enhanced.jar. Both will be required in the future for full functionality
+
